@@ -1,66 +1,28 @@
-## Foundry
+## Zup Core
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Zup core is the main repo for the Zup Protocol Smart Contracts.
 
-Foundry consists of:
+## Getting Started
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### Requirements
+* Foundry
+* NodeJS
+* Git
 
-## Documentation
+### Installing Dependencies
+`Forge install`
 
-https://book.getfoundry.sh/
+## Contracts
+### ZupRouter
+Zup router allows users to deposit into UniswapV3-Based pools and izumi pools.
 
-## Usage
+### UniswapRouter
+The UniswapRouter contract provides functionality to deposit tokens into Uniswap pools. It supports both ETH and ERC20 token deposits.
 
-### Build
+### IzumiRouter
+The IzumiRouter contract provides functionality to deposit tokens into Izumi pools. It also supports both ETH and ERC20 token deposits.
 
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+### Future Features
+* Fees on Deposit
+* Withdraw Liquidity
+* Automatic Range Selection
