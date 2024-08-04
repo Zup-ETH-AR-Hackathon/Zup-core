@@ -17,6 +17,4 @@ interface IUniswapNonfungiblePositionManager {
 	}
 
 	function mint(MintParams calldata params) external payable returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
-
-	function ownerOf(uint256 tokenId) external returns (address);
 }
