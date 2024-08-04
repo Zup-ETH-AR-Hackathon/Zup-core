@@ -1,0 +1,12 @@
+{
+  "name": "zup-core",
+  "version": "1.0.0",
+  "description": "Core contracts of Zup protocol",
+  "scripts": {
+    "test": "forge test -vvvv"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "thirdweb": "^5.43.2"
+  }
+}
