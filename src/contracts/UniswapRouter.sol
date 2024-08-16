@@ -14,6 +14,8 @@ abstract contract UniswapRouter {
 		address token0;
 		address token1;
 		uint24 fee;
+		int24 tickLower;
+		int24 tickUpper;
 		uint256 token0Amount;
 		uint256 token1Amount;
 		uint256 token0Min;
@@ -21,12 +23,17 @@ abstract contract UniswapRouter {
 		uint256 deadline;
 	}
 
-	event UniswapRouter__Deposited(address token0, address token1, uint256 token0Amount, uint256 token1Amount, uint24 feeTier);
+	event UniswapRouter__Deposited(
+		address token0,
+		address token1,
+		int24 tickLower,
+		int24 tickUpper,
+		uint256 token0Amount,
+		uint256 token1Amount,
+		uint24 feeTier
+	);
 
 	error UniswapRouter__WETHConversionFailed(uint256 quantity);
-
-	int24 constant MIN_TICK = -887272;
-	int24 constant MAX_TICK = -MIN_TICK;
 
 	IERC20 private immutable s_weth;
 
@@ -71,8 +78,8 @@ abstract contract UniswapRouter {
 				token0: params.token0,
 				token1: params.token1,
 				fee: params.fee,
-				tickLower: MIN_TICK,
-				tickUpper: MAX_TICK,
+				tickLower: params.tickLower,
+				tickUpper: params.tickUpper,
 				amount0Desired: params.token0Amount,
 				amount1Desired: params.token1Amount,
 				amount0Min: params.token0Min,
@@ -82,6 +89,14 @@ abstract contract UniswapRouter {
 			})
 		);
 
-		emit UniswapRouter__Deposited(params.token0, params.token1, params.token0Amount, params.token0Amount, params.fee);
+		emit UniswapRouter__Deposited(
+			params.token0,
+			params.token1,
+			params.tickLower,
+			params.tickUpper,
+			params.token0Amount,
+			params.token0Amount,
+			params.fee
+		);
 	}
 }

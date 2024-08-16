@@ -18,6 +18,8 @@ abstract contract IzumiRouter {
 		address token0;
 		address token1;
 		uint24 fee;
+		int24 tickLower;
+		int24 tickUpper;
 		uint128 token0Amount;
 		uint128 token1Amount;
 		uint128 token0Min;
@@ -32,6 +34,8 @@ abstract contract IzumiRouter {
 		address depositor,
 		address tokenX,
 		address tokenY,
+		int24 tickLower,
+		int24 tickUpper,
 		uint256 tokenXAmount,
 		uint256 tokenYAmount,
 		uint24 feeTier,
@@ -70,8 +74,8 @@ abstract contract IzumiRouter {
 				tokenX: mintParams.token0,
 				tokenY: mintParams.token1,
 				fee: mintParams.fee,
-				pl: MIN_PRICE_LEFT,
-				pr: MAX_PRICE_RIGHT,
+				pl: mintParams.tickLower,
+				pr: mintParams.tickUpper,
 				xLim: mintParams.token0Amount,
 				yLim: mintParams.token1Amount,
 				amountXMin: mintParams.token0Min,
@@ -84,6 +88,8 @@ abstract contract IzumiRouter {
 			msg.sender,
 			mintParams.token0,
 			mintParams.token1,
+			mintParams.tickLower,
+			mintParams.tickUpper,
 			mintParams.token0Min,
 			mintParams.token1Min,
 			mintParams.fee,
